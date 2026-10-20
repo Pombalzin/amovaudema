@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Quiz — Geografia e História</title>
-  <meta name="description" content="App de estudos com quiz de Geografia e História: 30 questões com alternativas embaralhadas a cada rodada. Funciona offline.">
+  <title>Quiz de História</title>
+  <meta name="description" content="App de estudos com quiz de História: 116 questões de 7 assuntos, com perguntas e alternativas sorteadas a cada rodada. Funciona offline.">
 
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#4f46e5">
@@ -23,10 +23,10 @@
 <header class="topo">
   <div class="topo-inner">
     <div class="marca">
-      <span class="marca-icone" aria-hidden="true">Q</span>
+      <span class="marca-icone" aria-hidden="true">H</span>
       <div>
-        <h1>Quiz de Estudos</h1>
-        <p class="marca-sub">Geografia &amp; História</p>
+        <h1>Quiz de História</h1>
+        <p class="marca-sub">7 assuntos · 116 questões</p>
       </div>
     </div>
     <div class="topo-acoes">
@@ -43,20 +43,30 @@
     <div class="cartao">
       <h2>Escolha o que estudar</h2>
       <p class="lead">
-        30 questões de Geografia e História. As alternativas são embaralhadas
-        a cada rodada, então a resposta nunca fica na mesma posição.
+        Cada rodada sorteia perguntas novas e monta as alternativas na hora:
+        a resposta certa nunca fica na mesma posição e os erros mudam a cada
+        tentativa.
       </p>
 
-      <label class="rotulo" for="filtro-categoria">Categoria</label>
-      <select id="filtro-categoria" class="seletor">
-        <option value="todas">Todas (30 questões)</option>
-        <option value="Geografia">Somente Geografia (15)</option>
-        <option value="Historia">Somente História (15)</option>
-      </select>
+      <label class="rotulo" for="filtro-categoria">Assunto</label>
+      <select id="filtro-categoria" class="seletor"></select>
+
+      <label class="rotulo" for="filtro-quantidade">Quantidade</label>
+      <select id="filtro-quantidade" class="seletor"></select>
+
+      <label class="opcao">
+        <input type="checkbox" id="modo-infinito">
+        <span>
+          <strong>Modo sem fim</strong>
+          <small>Quando acabarem, entram perguntas novas automaticamente</small>
+        </span>
+      </label>
 
       <button type="button" id="btn-iniciar" class="botao botao-grande">Começar quiz</button>
 
-      <p class="dica">Atalho: pressione <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> para responder.</p>
+      <p class="dica">
+        Atalho: pressione <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> para responder.
+      </p>
     </div>
   </section>
 
@@ -64,8 +74,8 @@
   <section id="tela-quiz" class="tela" hidden>
     <div class="cartao">
       <div class="quiz-topo">
-        <span id="progresso-texto" class="progresso-texto">Questão 1 de 30</span>
-        <span id="categoria-badge" class="badge">Geografia</span>
+        <span id="progresso-texto" class="progresso-texto">Questão 1</span>
+        <span id="categoria-badge" class="badge">História</span>
       </div>
       <div class="barra-fundo"><div id="barra-progresso" class="barra"></div></div>
 
@@ -79,6 +89,7 @@
       </div>
 
       <button type="button" id="btn-proxima" class="botao botao-grande" hidden>Próxima questão</button>
+      <button type="button" id="btn-encerrar" class="botao botao-suave btn-encerrar" hidden>Encerrar e ver resultado</button>
     </div>
   </section>
 
@@ -90,7 +101,7 @@
       <div class="placar">
         <span id="resultado-numero" class="placar-numero">0</span>
         <span class="placar-divisor">/</span>
-        <span id="resultado-total" class="placar-total">30</span>
+        <span id="resultado-total" class="placar-total">0</span>
       </div>
 
       <p id="resultado-mensagem" class="lead"></p>
@@ -98,7 +109,7 @@
 
       <div class="acoes">
         <button type="button" id="btn-reiniciar" class="botao botao-grande">Jogar de novo</button>
-        <button type="button" id="btn-voltar" class="botao botao-suave">Trocar categoria</button>
+        <button type="button" id="btn-voltar" class="botao botao-suave">Trocar assunto</button>
       </div>
 
       <h3 class="revisao-titulo">Revisão</h3>
@@ -109,7 +120,7 @@
 </main>
 
 <footer class="rodape">
-  <p>Geografia e História · 30 questões · funciona offline</p>
+  <p>História · 7 assuntos · funciona offline</p>
 </footer>
 
 <script src="js/perguntas.js"></script>

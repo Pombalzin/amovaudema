@@ -1,7 +1,7 @@
 /* Service worker do app de estudos — cache e funcionamento offline. */
 
-const VERSAO = 'v1';
-const CACHE_NAME = `quiz-estudos-${VERSAO}`;
+const VERSAO = 'v2';
+const CACHE_NAME = `quiz-historia-${VERSAO}`;
 
 // Tudo que é preciso para o quiz funcionar sem internet.
 const PRECACHE = [

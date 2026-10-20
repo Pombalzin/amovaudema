@@ -1,5 +1,5 @@
 /* ==========================================================
-   Quiz de Estudos — Geografia e História
+   Quiz de História
    ========================================================== */
 
 :root {
@@ -195,6 +195,53 @@ main {
   font-size: 13px;
   color: var(--texto-suave);
   text-align: center;
+}
+
+/* ------------------------------ opções ------------------------------ */
+
+.opcao {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  cursor: pointer;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.opcao:hover {
+  border-color: var(--primaria-clara);
+}
+
+.opcao input {
+  margin: 3px 0 0;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primaria);
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.opcao input:focus-visible {
+  outline: 2px solid var(--primaria-clara);
+  outline-offset: 2px;
+}
+
+.opcao strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.opcao small {
+  display: block;
+  font-size: 12.5px;
+  color: var(--texto-suave);
+  line-height: 1.45;
+  margin-top: 2px;
 }
 
 kbd {
@@ -417,6 +464,11 @@ kbd {
 
 #btn-proxima {
   margin-top: 18px;
+}
+
+.btn-encerrar {
+  width: 100%;
+  margin-top: 10px;
 }
 
 /* ------------------------------ resultado ------------------------------ */

@@ -1,7 +1,7 @@
 {
-  "name": "Quiz de Estudos — Geografia e História",
-  "short_name": "Quiz Estudos",
-  "description": "Quiz com 30 questões de Geografia e História. As alternativas são embaralhadas a cada rodada e funciona offline.",
+  "name": "Quiz de História",
+  "short_name": "Quiz História",
+  "description": "Quiz com 116 questões de História em 7 assuntos. Perguntas e alternativas são sorteadas a cada rodada e o app funciona offline.",
   "lang": "pt-BR",
   "dir": "ltr",
   "start_url": "./index.html",
@@ -39,15 +39,27 @@
   ],
   "shortcuts": [
     {
-      "name": "Quiz de Geografia",
-      "short_name": "Geografia",
-      "url": "./index.html?categoria=Geografia",
+      "name": "Antiguidade",
+      "short_name": "Antiguidade",
+      "url": "./index.html?assunto=Antiguidade",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Quiz de História",
-      "short_name": "História",
-      "url": "./index.html?categoria=Historia",
+      "name": "Idade Média",
+      "short_name": "Média",
+      "url": "./index.html?assunto=Idade Média",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Brasil",
+      "short_name": "Brasil",
+      "url": "./index.html?assunto=Brasil: República",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Mundo Contemporâneo",
+      "short_name": "Contemporâneo",
+      "url": "./index.html?assunto=Mundo Contemporâneo",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
