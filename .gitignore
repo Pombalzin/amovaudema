@@ -398,3 +398,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Certificados locais do servidor HTTPS de desenvolvimento
+cert.pem
+key.pem
