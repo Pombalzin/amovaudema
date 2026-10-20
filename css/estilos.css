@@ -1,0 +1,542 @@
+/* ==========================================================
+   Quiz de Estudos — Geografia e História
+   ========================================================== */
+
+:root {
+  --fundo: #0b1020;
+  --fundo-2: #131a33;
+  --superficie: rgba(255, 255, 255, 0.055);
+  --superficie-forte: rgba(255, 255, 255, 0.09);
+  --borda: rgba(255, 255, 255, 0.12);
+  --texto: #eef2ff;
+  --texto-suave: #9aa5c4;
+  --primaria: #6366f1;
+  --primaria-clara: #818cf8;
+  --verde: #22c55e;
+  --verde-fundo: rgba(34, 197, 94, 0.14);
+  --vermelho: #f43f5e;
+  --vermelho-fundo: rgba(244, 63, 94, 0.14);
+  --raio: 16px;
+  --sombra: 0 18px 45px rgba(0, 0, 0, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(1100px 620px at 12% -8%, rgba(99, 102, 241, 0.30), transparent 62%),
+    radial-gradient(900px 560px at 92% 4%, rgba(217, 70, 239, 0.20), transparent 60%),
+    var(--fundo);
+  background-attachment: fixed;
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  line-height: 1.55;
+}
+
+/* ------------------------------ topo ------------------------------ */
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-top: env(safe-area-inset-top);
+  background: rgba(11, 16, 32, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--borda);
+}
+
+.topo-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.marca-icone {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primaria), #d946ef);
+  font-weight: 800;
+  font-size: 20px;
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.42);
+}
+
+.topo h1 {
+  margin: 0;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+
+.marca-sub {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--texto-suave);
+}
+
+.topo-acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status {
+  font-size: 12.5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  color: var(--verde);
+  background: var(--verde-fundo);
+  white-space: nowrap;
+}
+
+.status[data-state='offline'] {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.14);
+}
+
+/* ------------------------------ layout ------------------------------ */
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 26px 20px 40px;
+}
+
+.tela {
+  animation: subir 0.32s ease both;
+}
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cartao {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 26px;
+  box-shadow: var(--sombra);
+}
+
+.cartao h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  color: var(--texto-suave);
+  margin: 0 0 22px;
+  font-size: 15px;
+}
+
+.rotulo {
+  display: block;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--texto-suave);
+  margin-bottom: 8px;
+}
+
+.seletor {
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  background: var(--superficie-forte);
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 15px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.seletor:focus-visible {
+  outline: 2px solid var(--primaria-clara);
+  outline-offset: 2px;
+}
+
+.dica {
+  margin: 18px 0 0;
+  font-size: 13px;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+kbd {
+  display: inline-block;
+  padding: 1px 7px;
+  margin: 0 1px;
+  border-radius: 6px;
+  border: 1px solid var(--borda);
+  background: var(--superficie-forte);
+  font-family: inherit;
+  font-size: 12px;
+}
+
+/* ------------------------------ botões ------------------------------ */
+
+.botao {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease, background 0.12s ease;
+}
+
+.botao:hover { filter: brightness(1.12); }
+.botao:active { transform: translateY(1px); }
+
+.botao:focus-visible {
+  outline: 2px solid var(--primaria-clara);
+  outline-offset: 2px;
+}
+
+.botao-grande {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primaria), #a855f7);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(99, 102, 241, 0.36);
+  padding: 15px 22px;
+  font-size: 16px;
+}
+
+.botao-suave {
+  background: var(--superficie-forte);
+  border-color: var(--borda);
+  color: var(--texto);
+  font-size: 13.5px;
+  padding: 8px 14px;
+}
+
+.acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ------------------------------ quiz ------------------------------ */
+
+.quiz-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.progresso-texto {
+  font-size: 13.5px;
+  color: var(--texto-suave);
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.20);
+  border: 1px solid rgba(129, 140, 248, 0.40);
+  color: var(--primaria-clara);
+  white-space: nowrap;
+}
+
+.barra-fundo {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.barra {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primaria), #d946ef);
+  transition: width 0.35s ease;
+}
+
+.pergunta {
+  font-size: 21px;
+  line-height: 1.4;
+  margin: 0 0 22px;
+  letter-spacing: -0.015em;
+}
+
+.alternativas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alternativa {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 15px 16px;
+  border-radius: 13px;
+  border: 1px solid var(--borda);
+  background: var(--superficie-forte);
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 15.5px;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.alternativa:hover:not(:disabled) {
+  transform: translateX(3px);
+  border-color: var(--primaria-clara);
+}
+
+.alternativa:focus-visible {
+  outline: 2px solid var(--primaria-clara);
+  outline-offset: 2px;
+}
+
+.alternativa:disabled {
+  cursor: default;
+}
+
+.letra {
+  flex: 0 0 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid var(--borda);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto-suave);
+}
+
+.texto {
+  flex: 1;
+}
+
+.alternativa.certa {
+  background: var(--verde-fundo);
+  border-color: rgba(34, 197, 94, 0.55);
+}
+
+.alternativa.certa .letra {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #05210f;
+}
+
+.alternativa.errada {
+  background: var(--vermelho-fundo);
+  border-color: rgba(244, 63, 94, 0.55);
+}
+
+.alternativa.errada .letra {
+  background: var(--vermelho);
+  border-color: var(--vermelho);
+  color: #2b0510;
+}
+
+/* ------------------------------ feedback ------------------------------ */
+
+.feedback {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-radius: 13px;
+  border: 1px solid var(--borda);
+  animation: subir 0.25s ease both;
+}
+
+.feedback h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.feedback p {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--texto-suave);
+}
+
+.feedback-certo {
+  background: var(--verde-fundo);
+  border-color: rgba(34, 197, 94, 0.42);
+}
+
+.feedback-certo h3 { color: #4ade80; }
+
+.feedback-errado {
+  background: var(--vermelho-fundo);
+  border-color: rgba(244, 63, 94, 0.42);
+}
+
+.feedback-errado h3 { color: #fb7185; }
+
+#btn-proxima {
+  margin-top: 18px;
+}
+
+/* ------------------------------ resultado ------------------------------ */
+
+.placar {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  margin: 18px 0 10px;
+}
+
+.placar-numero {
+  font-size: 62px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--primaria-clara), #d946ef);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.placar-divisor,
+.placar-total {
+  font-size: 26px;
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+.recorde {
+  text-align: center;
+  font-size: 13.5px;
+  color: #fbbf24;
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.revisao-titulo {
+  margin: 30px 0 14px;
+  font-size: 17px;
+}
+
+.revisao {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.revisao-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+}
+
+.revisao-item.certa { border-left: 3px solid var(--verde); }
+.revisao-item.errada { border-left: 3px solid var(--vermelho); }
+
+.revisao-marcador {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.revisao-item.certa .revisao-marcador { color: var(--verde); }
+.revisao-item.errada .revisao-marcador { color: var(--vermelho); }
+
+.revisao-pergunta {
+  margin: 0 0 5px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.revisao-resposta {
+  margin: 0 0 5px;
+  font-size: 13.5px;
+  color: var(--texto-suave);
+}
+
+.revisao-explicacao {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--texto-suave);
+  opacity: 0.85;
+}
+
+/* ------------------------------ rodapé ------------------------------ */
+
+.rodape {
+  padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--texto-suave);
+  border-top: 1px solid var(--borda);
+}
+
+.rodape p {
+  margin: 0;
+}
+
+/* ------------------------------ responsivo ------------------------------ */
+
+@media (max-width: 560px) {
+  .cartao { padding: 20px 16px; }
+  .pergunta { font-size: 18.5px; }
+  .alternativa { font-size: 15px; padding: 13px 14px; }
+  .topo-inner { padding: 12px 16px; }
+  .marca-sub { display: none; }
+  .placar-numero { font-size: 52px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

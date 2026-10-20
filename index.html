@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quiz — Geografia e História</title>
+  <meta name="description" content="App de estudos com quiz de Geografia e História: 30 questões com alternativas embaralhadas a cada rodada. Funciona offline.">
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Quiz">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-inner">
+    <div class="marca">
+      <span class="marca-icone" aria-hidden="true">Q</span>
+      <div>
+        <h1>Quiz de Estudos</h1>
+        <p class="marca-sub">Geografia &amp; História</p>
+      </div>
+    </div>
+    <div class="topo-acoes">
+      <span class="status" data-status></span>
+      <button type="button" class="botao botao-suave" data-instalar hidden>Instalar app</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ---------- Tela inicial ---------- -->
+  <section id="tela-inicial" class="tela">
+    <div class="cartao">
+      <h2>Escolha o que estudar</h2>
+      <p class="lead">
+        30 questões de Geografia e História. As alternativas são embaralhadas
+        a cada rodada, então a resposta nunca fica na mesma posição.
+      </p>
+
+      <label class="rotulo" for="filtro-categoria">Categoria</label>
+      <select id="filtro-categoria" class="seletor">
+        <option value="todas">Todas (30 questões)</option>
+        <option value="Geografia">Somente Geografia (15)</option>
+        <option value="Historia">Somente História (15)</option>
+      </select>
+
+      <button type="button" id="btn-iniciar" class="botao botao-grande">Começar quiz</button>
+
+      <p class="dica">Atalho: pressione <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> para responder.</p>
+    </div>
+  </section>
+
+  <!-- ---------- Tela do quiz ---------- -->
+  <section id="tela-quiz" class="tela" hidden>
+    <div class="cartao">
+      <div class="quiz-topo">
+        <span id="progresso-texto" class="progresso-texto">Questão 1 de 30</span>
+        <span id="categoria-badge" class="badge">Geografia</span>
+      </div>
+      <div class="barra-fundo"><div id="barra-progresso" class="barra"></div></div>
+
+      <h2 id="pergunta-texto" class="pergunta"></h2>
+
+      <div id="alternativas" class="alternativas"></div>
+
+      <div id="feedback" class="feedback" hidden>
+        <h3 id="feedback-titulo"></h3>
+        <p id="feedback-texto"></p>
+      </div>
+
+      <button type="button" id="btn-proxima" class="botao botao-grande" hidden>Próxima questão</button>
+    </div>
+  </section>
+
+  <!-- ---------- Tela do resultado ---------- -->
+  <section id="tela-resultado" class="tela" hidden>
+    <div class="cartao">
+      <h2>Resultado</h2>
+
+      <div class="placar">
+        <span id="resultado-numero" class="placar-numero">0</span>
+        <span class="placar-divisor">/</span>
+        <span id="resultado-total" class="placar-total">30</span>
+      </div>
+
+      <p id="resultado-mensagem" class="lead"></p>
+      <p id="resultado-recorde" class="recorde"></p>
+
+      <div class="acoes">
+        <button type="button" id="btn-reiniciar" class="botao botao-grande">Jogar de novo</button>
+        <button type="button" id="btn-voltar" class="botao botao-suave">Trocar categoria</button>
+      </div>
+
+      <h3 class="revisao-titulo">Revisão</h3>
+      <ul id="revisao" class="revisao"></ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <p>Geografia e História · 30 questões · funciona offline</p>
+</footer>
+
+<script src="js/perguntas.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
